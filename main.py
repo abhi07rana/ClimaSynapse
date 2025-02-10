@@ -13,10 +13,7 @@ from sklearn.linear_model import LinearRegression
 import numpy as np
 from datetime import datetime
 from sklearn.preprocessing import StandardScaler
-from dotenv import load_dotenv 
 
-
-load_dotenv()
 API_KEY = "06da29eebb4f45c595e45001251002"
 WEATHER_API_URL = "http://api.weatherapi.com/v1/current.json"
 
@@ -104,28 +101,20 @@ def predict_future_climate():
     if not required_columns.issubset(df.columns):
         return jsonify({"error": f"CSV must have columns: {required_columns}"}), 400
 
-    # Feature selection
     X = df[["Year", "Humidity", "Wind_Speed_kph", "Precipitation_mm"]]
     y = df["Temperature_C"]
 
-    # Normalize features for better accuracy
     scaler = StandardScaler()
     X_scaled = scaler.fit_transform(X)
 
-    # Train model
     model = LinearRegression()
     model.fit(X_scaled, y)
 
-    # Get the current year
     current_year = datetime.now().year
-
-    # Predict for the next 5 years dynamically
     future_years = np.array([[year, 65, 12.0, 2.5] for year in range(current_year + 1, current_year + 6)])
     future_years_scaled = scaler.transform(future_years)
-
     predictions = model.predict(future_years_scaled)
 
-    # Return forecast results
     forecast = [{"year": int(year[0]), "predicted_temperature": round(temp, 2)} for year, temp in zip(future_years, predictions)]
     
     return jsonify(forecast)
