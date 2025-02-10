@@ -1,0 +1,7 @@
+Year,City,Temperature_C,Humidity,Wind_Speed_kph,Precipitation_mm
+2020,New York,12.5,65,15.3,2.1
+2021,Los Angeles,13.2,70,12.5,0.0
+2022,Chicago,14.1,60,18.2,5.3
+2023,London,15.5,55,10.8,0.0
+2024,New York,16.0,50,8.2,0.0
+2025,Los Angeles,16.8,48,6.5,0.0
