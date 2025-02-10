@@ -17,7 +17,7 @@ from dotenv import load_dotenv
 
 
 load_dotenv()
-API_KEY = os.getenv("API_KEY")
+API_KEY = "06da29eebb4f45c595e45001251002"
 WEATHER_API_URL = "http://api.weatherapi.com/v1/current.json"
 
 app = Flask(__name__)
