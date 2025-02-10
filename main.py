@@ -145,5 +145,6 @@ def visualize_data():
     
     return f'<img src="data:image/png;base64,{plot_url}"/>'
 
-if __name__ == '__main__':
-    app.run(debug=True)
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=5000, debug=True)
+
